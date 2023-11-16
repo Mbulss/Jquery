@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Interactive Restaurant Menu</title>
+
+  <style>
+    .t{
+      color: #000;
+      text-align: center;
+      padding: 30px;
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-item {
+      display: inline-block;
+      width: 200px;
+      margin: 10px;
+      padding: 10px;
+      color: #000;
+      background-color: #dcdcdc;
+      border-radius: 5px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.1);
+    }
+
+    .menu-details {
+      display: none;
+      position: absolute;
+      width: 250px;
+      padding: 15px;
+      background-color: #dcdcdc;    
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      bottom: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .menu-item:hover .menu-details {
+      display: block;
+    }
+    
+    .menu-item img {
+      width: 180px; 
+      height: 150px; 
+    
+    }
+    .menu-item .description {
+      margin-top: 10px;
+      display: none;
+    }
+
+    .menu-item:hover .description {
+      display: block;
+    }
+    @media(max-width: 1116px){
+      
+    }
+    @media (max-width: 700px) {
+      .menu {
+        text-align: center;
+
+      }
+
+      .menu-item {
+        width: 100%;
+        margin: 40px auto;
+      }
+    }
+
+   
+  </style>
+</head>
+<body>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Haniif</label>
+        <ul>
+          <li><a class="active" href="index.html">Contact</a></li>
+          <li><a href="filter.html">Image filter</a></li>
+          <li><a href="dish.html">Interactive Menu</a></li>
+          <li><a href="calcu.html">Calculator</a></li>
+          <li><a href="d&d.html">Drag & Drop</a></li>
+        </ul>
+    </nav>
+  <h1 class="t">Terilion Restaurant</h1>
+  <div class="menu">
+    <div class="menu-item">
+      <h3>Dish 1</h3>
+      <img src="Dimage/D (1).jpg" alt="Dish 1">
+      <div class="menu-details">
+        <p>Spaghetti Aglio Olio.</p>
+        <p>Price: $10</p>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <h3>Dish 2</h3>
+      <img src="Dimage/D (2).jpg" alt="Dish 2">
+      <div class="menu-details">
+        <p>Steak.</p>
+        <p>Price: $25</p>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <h3>Dish 3</h3>
+      <img src="Dimage/D (3).jpg" alt="Dish 3">
+      <div class="menu-details">
+        <p>Pepperoni Pizza.</p>
+        <p>Price: $15</p>
+      </div>
+    </div> 
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('.menu-item').hover(
+        function() {
+          $(this).find('.menu-details').fadeIn(200);
+        },
+        function() {
+          $(this).find('.menu-details').fadeOut(200);
+        }
+      );
+    });
+  </script>
+</body>
+</html>

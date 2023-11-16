@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery with Filters</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">Haniif</label>
+    <ul>
+      <li><a class="active" href="index.html">Contact</a></li>
+      <li><a href="filter.html">Image filter</a></li>
+      <li><a href="dish.html">Interactive Menu</a></li>
+      <li><a href="calcu.html">Calculator</a></li>
+      <li><a href="d&d.html">Drag & Drop</a></li>
+      
+    </ul>
+</nav>
+
+<section>
+  <div class="filter-buttons">
+    <button class="filter-button" data-filter="all">All</button>
+    <button class="filter-button" data-filter="nature">Nature</button>
+    <button class="filter-button" data-filter="travel">Travel</button>
+    <button class="filter-button" data-filter="animals">Animals</button>
+  </div>
+
+  <div class="image-gallery">
+    <div class="image nature" data-category="nature"><img src="Fimage/N1.jpg" alt="Nature Image1"></div>
+    <div class="image nature" data-category="nature"><img src="Fimage/N2.jpg" alt="Nature Image2"></div>
+    <div class="image nature" data-category="nature"><img src="Fimage/N3.jpg" alt="Nature Image3"></div>
+    <div class="image travel" data-category="travel"><img src="Fimage/T (1).jpg" alt="Travel Image1"></div>
+    <div class="image travel" data-category="travel"><img src="Fimage/T (2).jpg" alt="Travel Image2"></div>
+    <div class="image travel" data-category="travel"><img src="Fimage/T (3).jpg" alt="Travel Image3"></div>
+    <div class="image animals" data-category="animals"><img src="Fimage/A (1).jpg" alt="Animals Image1"></div>
+    <div class="image animals" data-category="animals"><img src="Fimage/A (3).jpg" alt="Animals Image2"></div>
+    <div class="image animals" data-category="animals"><img src="Fimage/A (2).jpg" alt="Animals Image3"></div>
+  </div>
+</section>
+
+  <style>
+    .filter-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  margin: 5px;
+  border: 1px solid #0082e6;;
+  border-radius: 5px;
+  background-color: #0082e6;;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #005aa7; 
+  border-color: #005aa7; 
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image {
+  margin: 10px;
+}
+
+.image {
+  display: none;
+  
+}
+
+.image.show {
+  display: block;
+}
+
+.image img {
+  width: 150px; 
+  height: 200px; 
+}
+  </style>
+
+  <script>
+  $(document).ready(function() {
+    $('.image').addClass('show');
+
+    $('.filter-button').click(function() {
+      const filter = $(this).data('filter');
+
+      if (filter === 'all') {
+        $('.image').addClass('show');
+      } else {
+        $('.image').removeClass('show');
+        $('.image[data-category="' + filter + '"]').addClass('show');
+      }
+    });
+  });
+  </script>
+  
+</body>
+</html>

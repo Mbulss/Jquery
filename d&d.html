@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+  <title>Drag-and-Drop Planner</title>
+    <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    .planner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 300px;
+      padding: 10px;
+      background-color: #dcdcdc;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .task {
+      background-color: #0082e6;
+      color: white;
+      padding: 12px;
+      margin-bottom: 8px;
+      cursor: grab;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+
+    .task:hover {
+      background-color: #0082e6;
+      transform: scale(1.1); 
+    }
+  </style>
+</head>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">Haniif</label>
+        <ul>
+          <li><a class="active" href="index.html">Contact</a></li>
+          <li><a href="filter.html">Image filter</a></li>
+          <li><a href="dish.html">Interactive Menu</a></li>
+          <li><a href="calcu.html">Calculator</a></li>
+          <li><a href="d&d.html">Drag & Drop</a></li>
+          
+        </ul>
+    </nav>
+
+
+  <div class="planner">
+    <div class="task" draggable="true">Task 1</div>
+    <div class="task" draggable="true">Task 2</div>
+    <div class="task" draggable="true">Task 3</div>
+    <div class="task" draggable="true">Task 4</div>
+    <div class="task" draggable="true">Task 5</div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      let draggedItem = null;
+
+      $('.task').on('dragstart', function(event) {
+        draggedItem = $(this);
+        event.originalEvent.dataTransfer.setData('text', 'dragging');
+      });
+
+      $('.task').on('dragover', function(event) {
+        event.preventDefault();
+      });
+
+      $('.task').on('drop', function(event) {
+        if (draggedItem) {
+          $(this).after(draggedItem);
+          draggedItem = null;
+
+          $('#feedback').text('Elemen berhasil dipindahkan!');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
